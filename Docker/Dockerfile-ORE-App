@@ -3,9 +3,11 @@ ARG CMAKE_BUILD_TYPE=Release
 ARG DOCKER_REPO
 ARG ORE_HELPER_VERSION
 ARG ORE_VERSION
+ARG ORE_BUILD_VERSION
 
 FROM ${DOCKER_REPO}env_ore:${ORE_VERSION} AS env_ore
-FROM ${DOCKER_REPO}ore-helper:${ORE_HELPER_VERSION}
+# FROM ${DOCKER_REPO}ore-helper:${ORE_HELPER_VERSION}
+FROM ${DOCKER_REPO}ore-build-dependencies:${ORE_BUILD_VERSION} AS orebuild
 
 RUN mkdir -p /ore/App
 
@@ -15,9 +17,13 @@ COPY --from=env_ore /usr/local/lib /usr/local/lib
 COPY --from=env_ore /usr/include/boost/ /usr/include/boost
 COPY --from=env_ore /oreswig /oreswig
 
+RUN true
+COPY Examples /ore/Examples
+COPY Tools/PythonTools /ore/Tools/PythonTools
+
 WORKDIR /ore
 
-ENV PYTHONPATH=/oreswig/pythonlib
+ENV PYTHONPATH=/oreswig/pythonlib:/ore/Tools/PythonTools
 ENV LD_LIBRARY_PATH=/usr/local/lib:./
 
 CMD bash

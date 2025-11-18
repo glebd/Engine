@@ -57,7 +57,7 @@ This creates the docker images:
 
 Invoke the command below to run the docker container interactively:
 
-    docker run -it ore_app bash
+    docker run -it ore_test bash
 
 Here are the commands to run the examples:
 

@@ -2,11 +2,12 @@ version: '3'
 
 services:
   build_env_boost:
-    image: ore-helper:latest
+    image: ore_test:${ORE_TAG}
     cap_drop:
       - NET_RAW
     build:
       context: .
       dockerfile: Dockerfile-Test
       args:
+        - DOCKER_REPO=${DOCKER_REPO}
         - DEBIAN_TAG=${DEBIAN_TAG}

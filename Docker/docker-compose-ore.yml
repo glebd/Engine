@@ -9,6 +9,7 @@ services:
       context: ../
       dockerfile: Docker/Dockerfile-ORE
       args:
+        - DOCKER_REPO=${DOCKER_REPO}
         - DEBIAN_TAG=${DEBIAN_TAG}
         - cmake_build_type=${CMAKE_BUILD_TYPE}
         - NUM_CORES=${NUM_CORES}

@@ -9,4 +9,5 @@ services:
       context: ../
       dockerfile: Docker/Dockerfile-ORE-Dependencies
       args:
+        - DOCKER_REPO=${DOCKER_REPO}
         - DEBIAN_TAG=${DEBIAN_TAG}
