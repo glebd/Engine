@@ -12,6 +12,7 @@ This build requires:
 - Visual Studio
 - Boost
 - CMake
+- SWIG
 
 # Source code
 

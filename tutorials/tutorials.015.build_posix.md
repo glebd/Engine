@@ -14,6 +14,7 @@ This build requires:
 - gcc
 - Boost
 - CMake
+- SWIG
 
 # Source code
 
